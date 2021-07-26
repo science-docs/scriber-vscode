@@ -1,0 +1,60 @@
+{
+    "name": "Scriber",
+    "scopeName": "source.scriber",
+    "fileTypes": [
+        "scriber"
+    ],
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "name": "entity.name.function.scriber",
+            "match": "@[^\\(\\)\"\\s]+"
+        },
+        {
+            "name": "variable.other.scriber",
+            "match": "(\\w+):"
+        },
+        {
+            "name": "constant.numeric.scriber",
+            "match": "\\b([1-9][0-9]*(\\.[0-9]+)?|\\.[0-9]+)(cm|mm|pt|pu|in)\\b"
+        },
+        {
+            "name": "string.quoted.double.scriber",
+            "begin": "@\"",
+            "end": "\""
+        }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.block.scriber",
+                    "begin": "/\\*",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.scriber"
+                        }
+                    },
+                    "end": "\\*/",
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.scriber"
+                        }
+                    }
+                },
+                {
+                    "begin": "(^\\s+)?(?=//)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "punctuation.whitespace.comment.leading.cs"
+                        }
+                    },
+                    "end": "(?=$)",
+                    "name": "comment.line.scriber"
+                }
+            ]
+        }
+    }
+}
